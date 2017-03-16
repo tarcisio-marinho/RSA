@@ -67,6 +67,7 @@ def cipher(words,e,n): # get the words and compute the cipher
         lista.append(d)
         i=i+1
     return lista
+
 def private_key(toti,e):
     toti2=toti
     toti3=toti
