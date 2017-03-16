@@ -58,14 +58,50 @@ def mod(a,b): # mod function
 def cipher(words,e,n): # get the words and compute the cipher
     tam=len(words)
     i=0
+    lista=[None]
     while(i<tam):
         letter=words[i]
         k=ord(letter)
         k=k**e
         d=mod(k,n)
-        print(d)
+        lista.append(d)
         i=i+1
-        # c=letter^e mod n
+    return lista
+def private_key(toti,e):
+    toti2=toti
+    toti3=toti
+    d=1
+    d2=d
+    while True:
+        resto=toti2/e
+        resto=int(resto) # 5
+
+        a=resto*e # 35
+        d2=d2*resto # 5
+        a=toti2-a # 5
+        d2=toti3-d2 # 35
+        if(d2<0):
+            d2=d2+toti
+        if(a==1):
+            return d2
+        toti2=e # 7
+        e=a # 5
+        toti3=d # 1
+        d=d2 # 35
+
+def descifra(cifra,n,d):
+    lista=[None]
+    i=0
+    tamanho=len(cifra)
+    print(tamanho)
+    # texto=cifra ^ d mod n
+    while i<tamanho:
+        result=cifra[i]**d
+        texto=mod(result,n)
+        letra=chr(texto)
+        lista.append(letra)
+    print(lista)
+
 
 ## MAIN
 text=raw_input('Insert the text that u want to cryptograph: ')
@@ -78,4 +114,5 @@ totient_de_N=x*y # compute the totient of N
 e=generate_E(totient_de_N) # generate E
 public_key=[n,e]
 print('Your public key is',public_key)
-cipher(text,e,n)
+text_cipher=cipher(text,e,n)
+print(text_cipher)
