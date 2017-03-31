@@ -78,7 +78,6 @@ def descifra(cifra,n,d):
     lista=[]
     i=0
     tamanho=len(cifra)
-    print(tamanho)
     # texto=cifra ^ d mod n
     while i<tamanho:
         result=cifra[i]**d
