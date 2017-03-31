@@ -58,7 +58,7 @@ def mod(a,b): # mod function
 def cipher(words,e,n): # get the words and compute the cipher
     tam=len(words)
     i=0
-    lista=[None]
+    lista=[]
     while(i<tam):
         letter=words[i]
         k=ord(letter)
@@ -69,29 +69,13 @@ def cipher(words,e,n): # get the words and compute the cipher
     return lista
 
 def private_key(toti,e):
-    toti2=toti
-    toti3=toti
-    d=1
-    d2=d
-    while True:
-        resto=toti2/e
-        resto=int(resto) # 5
-
-        a=resto*e # 35
-        d2=d2*resto # 5
-        a=toti2-a # 5
-        d2=toti3-d2 # 35
-        if(d2<0):
-            d2=d2+toti
-        if(a==1):
-            return d2
-        toti2=e # 7
-        e=a # 5
-        toti3=d # 1
-        d=d2 # 35
+    d=0
+    while(mod(d*e,toti)!=1):
+        d=d+1
+    return d
 
 def descifra(cifra,n,d):
-    lista=[None]
+    lista=[]
     i=0
     tamanho=len(cifra)
     print(tamanho)
@@ -101,6 +85,7 @@ def descifra(cifra,n,d):
         texto=mod(result,n)
         letra=chr(texto)
         lista.append(letra)
+        i=i+1
     print(lista)
 
 
@@ -114,6 +99,9 @@ x=totient(q) # compute the totient of Q
 totient_de_N=x*y # compute the totient of N
 e=generate_E(totient_de_N) # generate E
 public_key=[n,e]
-print('Your public key is',public_key)
+print('Your public key is '+str(public_key))
 text_cipher=cipher(text,e,n)
 print(text_cipher)
+d=private_key(totient_de_N,e)
+print('Your private key is '+str(d))
+descifra(text_cipher,n,d)
