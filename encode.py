@@ -118,7 +118,7 @@ def descifra(cifra,n,d):
 
 
 ## MAIN
-if __name__==__main__:
+if __name__=='__main__':
     text=raw_input('Insert the text that u want to cryptograph: ')
     p=generate_prime() # generates random P
     q=generate_prime() # generates random Q
