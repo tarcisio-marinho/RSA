@@ -3,6 +3,15 @@ written for fun.
 This is not meant to be efficient and not entirely correct, 
 do NOT use it for anything important.
 
+# Execução:
+
+    ~$ python enconde.py
+
+    Insira o texto que você deseja criptografar
+    O programa criptografa e descriptografa o texto, mostrando o texto cifrado e depois o texto plano
+    
+    
+    
 https://en.wikipedia.org/wiki/RSA_(cryptosystem)
 
 # Este diretorio contém o código gerador das chaves publicas e privada
