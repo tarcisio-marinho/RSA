@@ -14,7 +14,7 @@ Não use para nada importante
     
 https://en.wikipedia.org/wiki/RSA_(cryptosystem)
 
-# Este diretorio contém o código gerador das chaves publicas e privada
+# Este repositório contém o código gerador das chaves publicas e privada
 O método de criação delas não segue nenhum padrão do algoritmo RSA
 foi algo criado por mim mesmo, seguindo algumas instruções básicas de criação 
 
