@@ -5,12 +5,20 @@
 
 import random
 
+
+'''
+Calcula o totiente do numero primo
+'''
 def totient(number): # compute the totient of a prime number
     if(prime(number)==True):
         return number-1
     else:
         return False
 
+    
+'''
+Verifica se um numero gerado é primo
+'''
 # it isnt the best method to compute prime numbers
 def prime(number): # check if the number is prime
     i=1
@@ -26,7 +34,9 @@ def prime(number): # check if the number is prime
         return False
 
 
-
+'''
+Gera um numero aleatório E, sasfazendo as condições
+'''
 def generate_E(num): # recives totient of N as a parameter
     def mdc(n1,n2): # compute the mdc of the totient of N and E
         rest=1
@@ -42,12 +52,18 @@ def generate_E(num): # recives totient of N as a parameter
         if(mdc(num,e)==1):
             return e
 
+        
+'''
+Gera um numero primo aleatório
+'''
 def generate_prime(): # generate the prime number - p e q
     while True: # 2**2048 is the RSA standart keys
         x=random.randrange(1,100) # define the range of the primes
         if(prime(x)==True):
             return x
-
+'''
+Função modular entre dois números
+'''
 def mod(a,b): # mod function
     if(a<b):
         return a
@@ -55,6 +71,11 @@ def mod(a,b): # mod function
         c=a%b
         return c
 
+    
+    
+'''
+Cifra um texto
+'''
 def cipher(words,e,n): # get the words and compute the cipher
     tam=len(words)
     i=0
@@ -68,12 +89,20 @@ def cipher(words,e,n): # get the words and compute the cipher
         i=i+1
     return lista
 
+
+'''
+Calcula a chave privada
+'''
 def private_key(toti,e):
     d=0
     while(mod(d*e,toti)!=1):
         d=d+1
     return d
 
+
+'''
+Descriptografa um texto criptografado
+'''
 def descifra(cifra,n,d):
     lista=[]
     i=0
@@ -89,18 +118,19 @@ def descifra(cifra,n,d):
 
 
 ## MAIN
-text=raw_input('Insert the text that u want to cryptograph: ')
-p=generate_prime() # generates random P
-q=generate_prime() # generates random Q
-n=p*q # compute N
-y=totient(p) # compute the totient of P
-x=totient(q) # compute the totient of Q
-totient_de_N=x*y # compute the totient of N
-e=generate_E(totient_de_N) # generate E
-public_key=[n,e]
-print('Your public key is '+str(public_key))
-text_cipher=cipher(text,e,n)
-print(text_cipher)
-d=private_key(totient_de_N,e)
-print('Your private key is '+str(d))
-descifra(text_cipher,n,d)
+if __name__==__main__:
+    text=raw_input('Insert the text that u want to cryptograph: ')
+    p=generate_prime() # generates random P
+    q=generate_prime() # generates random Q
+    n=p*q # compute N
+    y=totient(p) # compute the totient of P
+    x=totient(q) # compute the totient of Q
+    totient_de_N=x*y # compute the totient of N
+    e=generate_E(totient_de_N) # generate E
+    public_key=[n,e]
+    print('Your public key is '+str(public_key))
+    text_cipher=cipher(text,e,n)
+    print(text_cipher)
+    d=private_key(totient_de_N,e)
+    print('Your private key is '+str(d))
+    descifra(text_cipher,n,d)
