@@ -1,7 +1,7 @@
-# Simple RSA implementation
-written for fun.
-This is not meant to be efficient and not entirely correct, 
-do NOT use it for anything important.
+# Implementação simples do Algoritmo de criptografia assimétrica RSA
+Feito por diversão e aprendizado, não está de acordo com os padrões do algoritmo RSA atualmente.
+Não use para nada importante
+
 
 # Execução:
 
