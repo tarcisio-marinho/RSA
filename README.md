@@ -68,3 +68,7 @@ https://www.lambda3.com.br/2012/12/entendendo-de-verdade-a-criptografia-rsa/
 http://www.lambda3.com.br/2012/12/entendendo-de-verdade-a-criptografia-rsa-parte-ii/
 
 http://www.lambda3.com.br/2013/01/entendendo-de-verdade-a-criptografia-rsa-parte-iii/
+
+# Uso na prática:
+    Eu fiz o uso desse algoritmo na implementação de um servidor e cliente SSH, usando o algoritmo RSA para troca de chaves entre o cliente e o servidor,
+    Código: https://github.com/tarcisio-marinho/SSH
