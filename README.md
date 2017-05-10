@@ -1,6 +1,9 @@
 # Implementação simples do Algoritmo de criptografia assimétrica RSA
 Feito por diversão e aprendizado, não está de acordo com os padrões do algoritmo RSA atualmente.
-Não use para nada importante
+Não use para nada importante.
+
+# Quer saber mais sobre o RSA ?
+https://medium.com/@tarcsiomarinho/algoritmo-de-criptografia-assim%C3%A9trica-rsa-c6254a3c7042
 
 
 # Execução:
