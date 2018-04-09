@@ -89,17 +89,6 @@ def cipher(words,e,n): # get the words and compute the cipher
         i=i+1
     return lista
 
-
-'''
-Calcula a chave privada
-'''
-def private_key(toti,e):
-    d=0
-    while(mod(d*e,toti)!=1):
-        d=d+1
-    return d
-
-
 '''
 Descriptografa um texto criptografado
 '''
@@ -117,9 +106,21 @@ def descifra(cifra,n,d):
     print(lista)
 
 
+'''
+Calcula a chave privada
+'''
+def private_key(toti,e):
+    d=0
+    while(mod(d*e,toti)!=1):
+        d=d+1
+    return d
+
+
+
+
 ## MAIN
 if __name__=='__main__':
-    text=raw_input('Insert the text that u want to cryptograph: ')
+    text="eae"
     p=generate_prime() # generates random P
     q=generate_prime() # generates random Q
     n=p*q # compute N
@@ -128,9 +129,11 @@ if __name__=='__main__':
     totient_de_N=x*y # compute the totient of N
     e=generate_E(totient_de_N) # generate E
     public_key=[n,e]
-    print('Your public key is '+str(public_key))
+    #print('Your public key is '+str(public_key))
     text_cipher=cipher(text,e,n)
     print(text_cipher)
     d=private_key(totient_de_N,e)
-    print('Your private key is '+str(d))
+    #print('Your private key is '+str(d))
     descifra(text_cipher,n,d)
+    #print("n ", n, "e", e, "d", d )
+    print(private_key(672, 600))
