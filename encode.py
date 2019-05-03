@@ -20,18 +20,22 @@ def totient(number): # compute the totient of a prime number
 Verifica se um numero gerado é primo
 '''
 # it isnt the best method to compute prime numbers
-def prime(number): # check if the number is prime
-    i=1
-    times=0
-    while(i<=number):
-        if(number%i==0):
-            times=times+1
-        i=i+1
-
-    if(times==2):
-        return True
-    else:
+def prime(n): # check if the number is prime
+    if (n <= 1):
         return False
+    if (n <= 3):
+        return True
+
+    if (n%2 == 0 or n%3 == 0):
+        return False
+
+    i = 5
+    while(i * i <= n):
+        if (n%i == 0 or n%(i+2) == 0):
+           return False
+        i+=6
+    return True
+
 
 
 '''
@@ -103,7 +107,7 @@ def descifra(cifra,n,d):
         letra=chr(texto)
         lista.append(letra)
         i=i+1
-    print(lista)
+    return lista
 
 
 '''
@@ -112,7 +116,7 @@ Calcula a chave privada
 def private_key(toti,e):
     d=0
     while(mod(d*e,toti)!=1):
-        d=d+1
+        d += 1
     return d
 
 
@@ -120,20 +124,20 @@ def private_key(toti,e):
 
 ## MAIN
 if __name__=='__main__':
-    text="eae"
-    p=generate_prime() # generates random P
-    q=generate_prime() # generates random Q
-    n=p*q # compute N
-    y=totient(p) # compute the totient of P
-    x=totient(q) # compute the totient of Q
-    totient_de_N=x*y # compute the totient of N
-    e=generate_E(totient_de_N) # generate E
-    public_key=[n,e]
-    #print('Your public key is '+str(public_key))
-    text_cipher=cipher(text,e,n)
-    print(text_cipher)
-    d=private_key(totient_de_N,e)
-    #print('Your private key is '+str(d))
-    descifra(text_cipher,n,d)
-    #print("n ", n, "e", e, "d", d )
-    print(private_key(672, 600))
+    text = input("Insert message: ")
+    p = generate_prime() # generates random P
+    q = generate_prime() # generates random Q
+    n = p*q # compute N
+    y = totient(p) # compute the totient of P
+    x = totient(q) # compute the totient of Q
+    totient_de_N = x*y # compute the totient of N
+    e = generate_E(totient_de_N) # generate E
+    public_key = (n, e)
+
+    print('Your public key:', public_key)
+    text_cipher = cipher(text,e,n)
+    print('Your encrypted message:', text_cipher)
+    d = private_key(totient_de_N,e)
+    print('Your private key is:', d)
+    original_text = descifra(text_cipher,n,d)
+    print('your original message:', original_text)
