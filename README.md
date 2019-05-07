@@ -3,7 +3,7 @@ Feito por diversão e aprendizado, não está de acordo com os padrões do algor
 Não use para nada importante.
 
 # Quer saber mais sobre o RSA ?
-https://medium.com/@tarcsiomarinho/algoritmo-de-criptografia-assim%C3%A9trica-rsa-c6254a3c7042
+https://medium.com/@tarcisioma/algoritmo-de-criptografia-assim%C3%A9trica-rsa-c6254a3c7042
 
 
 # Execução:
